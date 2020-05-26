@@ -23,9 +23,9 @@ class CreateRequestsOnBling {
 
       const response = await blingapi.post('pedido/json', {
         params: {
-          xml,
           apikey:
             'f1e716360b3b8804c30463e3a006302adf28da982fc9d3c67d6bb5f46f72720ba74c676e',
+          xml,
         },
       });
 
