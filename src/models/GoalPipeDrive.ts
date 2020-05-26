@@ -1,4 +1,6 @@
 export default interface GoalPipeDrive {
+  id: string;
+  owner_id: number;
   title: string;
   assignee: {
     id: string;
@@ -13,10 +15,12 @@ export default interface GoalPipeDrive {
   expected_outcome: {
     target: string;
     tracking_metric: string;
+    currency_id: number;
   };
+  interval: 'weekly' | 'monthly' | 'quarterly' | 'yearly';
   duration: {
     start: Date;
     end: Date;
   };
-  interval: 'weekly' | 'monthly' | 'quarterly' | 'yearly';
+  is_active: boolean;
 }
