@@ -1,5 +1,5 @@
-import GoalPipeDrive from '../models/GoalPipeDrive';
-import Goal from '../schemas/Goal';
+import GoalPipeDrive from '../../modules/pipedrive/interfaces/GoalPipeDrive';
+import Goal from '../database/schemas/Goal';
 
 class CreateGoalOnDatabase {
   public async execute(goal: GoalPipeDrive): Promise<void> {

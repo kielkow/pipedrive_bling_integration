@@ -1,8 +1,8 @@
-import AppError from '../errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
-import GoalPipeDrive from '../models/GoalPipeDrive';
+import GoalPipeDrive from '../interfaces/GoalPipeDrive';
 
-import pipedriveapi from '../ExternalAPI/pipedriveapi';
+import pipedriveapi from '../api/pipedriveapi';
 
 class SearchGoalsOnPipeDrive {
   public async execute(): Promise<GoalPipeDrive[] | []> {

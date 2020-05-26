@@ -1,15 +1,14 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
-
 import xml2js from 'xml2js';
-import AppError from '../errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
-import GoalPipeDrive from '../models/GoalPipeDrive';
-import RequestBling from '../models/RequestBling';
+import GoalPipeDrive from '../../pipedrive/interfaces/GoalPipeDrive';
+import RequestBling from '../interfaces/RequestBling';
 
-import CreateGoalOnDatabase from './CreateGoalOnDatabase';
+import CreateGoalOnDatabase from '../../../shared/services/CreateGoalOnDatabase';
 
-import blingapi from '../ExternalAPI/blingapi';
+import blingapi from '../api/blingapi';
 
 class CreateRequestsOnBling {
   public async execute(goals: GoalPipeDrive[]): Promise<RequestBling[]> {

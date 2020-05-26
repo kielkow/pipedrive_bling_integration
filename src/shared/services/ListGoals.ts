@@ -1,4 +1,4 @@
-import Goal from '../schemas/Goal';
+import Goal from '../database/schemas/Goal';
 
 class ListGoals {
   public async execute(): Promise<unknown> {

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import SearchGoalsOnPipeDrive from '../services/SearchGoalsOnPipeDrive';
-import CreateRequestsOnBling from '../services/CreateRequestsOnBling';
+import SearchGoalsOnPipeDrive from '../../modules/pipedrive/services/SearchGoalsOnPipeDrive';
+import CreateRequestsOnBling from '../../modules/bling/services/CreateRequestsOnBling';
 import ListGoals from '../services/ListGoals';
 
 const requestsRouter = Router();
