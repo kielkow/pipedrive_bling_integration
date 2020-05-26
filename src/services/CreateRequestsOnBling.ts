@@ -7,7 +7,7 @@ import AppError from '../errors/AppError';
 import GoalPipeDrive from '../models/GoalPipeDrive';
 import RequestBling from '../models/RequestBling';
 
-import Goal from '../schemas/Goal';
+import CreateGoalOnDatabase from './CreateGoalOnDatabase';
 
 import blingapi from '../ExternalAPI/blingapi';
 
@@ -15,8 +15,10 @@ class CreateRequestsOnBling {
   public async execute(goals: GoalPipeDrive[]): Promise<RequestBling[]> {
     const requests: RequestBling[] = [];
 
+    const createGoalOnDatabase = new CreateGoalOnDatabase();
+
     for (const goal of goals) {
-      await Goal.create(goal);
+      await createGoalOnDatabase.execute(goal);
 
       const builder = new xml2js.Builder();
       const xml = builder.buildObject(goal);
