@@ -5,7 +5,7 @@ import GoalPipeDrive from '../models/GoalPipeDrive';
 import pipedriveapi from '../ExternalAPI/pipedriveapi';
 
 class SearchGoalsOnPipeDrive {
-  public async execute(): Promise<GoalPipeDrive[]> {
+  public async execute(): Promise<GoalPipeDrive[] | []> {
     const goals = await pipedriveapi.get('goals/find', {
       params: {
         type: {
@@ -19,7 +19,7 @@ class SearchGoalsOnPipeDrive {
       throw new AppError(goals.statusText, goals.status);
     }
 
-    return goals.data;
+    return goals.data.data.goals;
   }
 }
 
