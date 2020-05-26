@@ -19,7 +19,14 @@ requestsRouter.post('/', async (request, response) => {
 requestsRouter.get('/', async (request, response) => {
   const listGoals = new ListGoals();
 
-  const goals = await listGoals.execute();
+  const params = {
+    title: request.params.title || '',
+    target: request.params.target || '',
+    date_start: request.params.date_start || '',
+    date_end: request.params.date_end || '',
+  };
+
+  const goals = await listGoals.execute(params);
 
   return response.json(goals);
 });
