@@ -9,7 +9,7 @@ export default interface RequestBling {
   numero: string;
   idPedido: number;
   codigos_rastreamento: {
-    codigo_rastreamento: string;
+    codigo_rastreamento?: string;
   };
-  volumes: Volume[];
+  volumes?: Volume[];
 }

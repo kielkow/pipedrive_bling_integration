@@ -1,12 +1,12 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
-import xml2js from 'xml2js';
 import AppError from '../../../shared/errors/AppError';
 
 import GoalPipeDrive from '../../pipedrive/interfaces/GoalPipeDrive';
 import RequestBling from '../interfaces/RequestBling';
 
 import CreateGoalOnDatabase from '../../../shared/services/CreateGoalOnDatabase';
+import Xml2jsProvider from '../providers/Xml2jsProvider';
 
 import blingapi from '../api/blingapi';
 
@@ -15,12 +15,11 @@ class CreateRequestsOnBling {
     const requests: RequestBling[] = [];
 
     const createGoalOnDatabase = new CreateGoalOnDatabase();
+    const xml2jsProvider = new Xml2jsProvider();
 
     for (const goal of goals) {
       await createGoalOnDatabase.execute(goal);
-
-      const builder = new xml2js.Builder();
-      const xml = builder.buildObject(goal);
+      const xml = await xml2jsProvider.generate(goal);
 
       const response = await blingapi.post('pedido/json', {
         params: {
