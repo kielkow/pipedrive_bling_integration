@@ -1,4 +1,4 @@
-import Goal from '../database/schemas/Goal';
+import Goal from '../infra/database/schemas/Goal';
 
 describe('ListGoals', () => {
   it('should be able to list goals from mongodb', async () => {

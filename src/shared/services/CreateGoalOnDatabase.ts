@@ -1,6 +1,6 @@
 import { MongooseDocument } from 'mongoose';
 import GoalPipeDrive from '../../modules/pipedrive/interfaces/GoalPipeDrive';
-import Goal from '../database/schemas/Goal';
+import Goal from '../infra/database/schemas/Goal';
 import AppError from '../errors/AppError';
 
 class CreateGoalOnDatabase {

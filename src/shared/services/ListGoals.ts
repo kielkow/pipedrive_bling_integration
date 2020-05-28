@@ -1,5 +1,5 @@
 import { MongooseDocument } from 'mongoose';
-import Goal from '../database/schemas/Goal';
+import Goal from '../infra/database/schemas/Goal';
 
 interface Request {
   title: string;
