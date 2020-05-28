@@ -1,9 +1,10 @@
+import { MongooseDocument } from 'mongoose';
 import GoalPipeDrive from '../../modules/pipedrive/interfaces/GoalPipeDrive';
 import Goal from '../database/schemas/Goal';
 import AppError from '../errors/AppError';
 
 class CreateGoalOnDatabase {
-  public async execute(goal: GoalPipeDrive): Promise<unknown> {
+  public async execute(goal: GoalPipeDrive): Promise<MongooseDocument | null> {
     try {
       const findGoal = await Goal.findOne({ title: goal.title });
 

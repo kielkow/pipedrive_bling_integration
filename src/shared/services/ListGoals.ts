@@ -1,3 +1,4 @@
+import { MongooseDocument } from 'mongoose';
 import Goal from '../database/schemas/Goal';
 
 interface Request {
@@ -13,7 +14,7 @@ class ListGoals {
     target,
     date_start,
     date_end,
-  }: Request): Promise<unknown> {
+  }: Request): Promise<MongooseDocument[]> {
     if (title && target && date_start && date_end) {
       const goals = await Goal.find({
         title,

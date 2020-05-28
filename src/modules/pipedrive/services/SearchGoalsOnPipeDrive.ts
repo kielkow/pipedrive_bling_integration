@@ -5,7 +5,7 @@ import GoalPipeDrive from '../interfaces/GoalPipeDrive';
 import pipedriveapi from '../api/pipedriveapi';
 
 class SearchGoalsOnPipeDrive {
-  public async execute(): Promise<GoalPipeDrive[] | []> {
+  public async execute(): Promise<GoalPipeDrive[]> {
     try {
       const goals = await pipedriveapi.get('goals/find', {
         params: {
