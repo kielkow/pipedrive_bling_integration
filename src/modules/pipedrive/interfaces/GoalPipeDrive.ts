@@ -19,8 +19,8 @@ export default interface GoalPipeDrive {
   };
   interval: 'weekly' | 'monthly' | 'quarterly' | 'yearly';
   duration: {
-    start: Date;
-    end: Date;
+    start: string;
+    end: string;
   };
   is_active: boolean;
 }

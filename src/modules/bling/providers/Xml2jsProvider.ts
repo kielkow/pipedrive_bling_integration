@@ -4,16 +4,21 @@ import AppError from '../../../shared/errors/AppError';
 
 class Xml2jsProvider {
   public async generate(formattedGoal: FormattedRequest): Promise<string> {
-    const builder = new xml2js.Builder();
-    const xml = builder.buildObject(formattedGoal);
+    try {
+      const builder = new xml2js.Builder();
+      const xml = builder.buildObject(formattedGoal);
 
-    if (!xml) {
-      throw new AppError(
-        `Not possible to convert to XML goal ${formattedGoal.pedido.cliente.numero}`,
-      );
+      if (!xml) {
+        throw new AppError(
+          `Not possible to convert to XML goal ${formattedGoal.pedido.cliente.numero}`,
+          500,
+        );
+      }
+
+      return xml;
+    } catch {
+      throw new AppError('Error to convert goal JSON to XML', 500);
     }
-
-    return xml;
   }
 }
 

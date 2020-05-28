@@ -20,33 +20,36 @@ class CreateRequestsOnBling {
     const requests: RequestBling[] = [];
 
     for (const goal of goals) {
-      try {
-        await createGoalOnDatabase.execute(goal);
+      const goalOnDatabase = await createGoalOnDatabase.execute(goal);
+
+      if (!goalOnDatabase) {
         const formattedGoal = await formatRequestProvider.format(goal);
         const xml = await xml2jsProvider.generate(formattedGoal);
 
-        const response = await blingapi.post('pedido/json', null, {
-          params: {
-            apikey:
-              'f1e716360b3b8804c30463e3a006302adf28da982fc9d3c67d6bb5f46f72720ba74c676e',
-            xml,
-          },
-        });
+        try {
+          const response = await blingapi.post('pedido/json', null, {
+            params: {
+              apikey:
+                'f1e716360b3b8804c30463e3a006302adf28da982fc9d3c67d6bb5f46f72720ba74c676e',
+              xml,
+            },
+          });
 
-        const request: RequestBling = {
-          numero: response.data.retorno.pedidos[0].pedido.numero,
-          idPedido: response.data.retorno.pedidos[0].pedido.idPedido,
-          codigos_rastreamento: {
-            codigo_rastreamento:
-              response.data.retorno.pedidos[0].pedido.codigos_rastreamento
-                .codigos_rastreamento,
-          },
-          volumes: response.data.retorno.pedidos[0].pedido.volumes,
-        };
+          const request: RequestBling = {
+            numero: response.data.retorno.pedidos[0].pedido.numero,
+            idPedido: response.data.retorno.pedidos[0].pedido.idPedido,
+            codigos_rastreamento: {
+              codigo_rastreamento:
+                response.data.retorno.pedidos[0].pedido.codigos_rastreamento
+                  .codigos_rastreamento,
+            },
+            volumes: response.data.retorno.pedidos[0].pedido.volumes,
+          };
 
-        requests.push(request);
-      } catch (err) {
-        throw new AppError(err.response.data.retorno.erros.erro.msg, 500);
+          requests.push(request);
+        } catch {
+          throw new AppError('Error to create a request on Bling', 500);
+        }
       }
     }
 

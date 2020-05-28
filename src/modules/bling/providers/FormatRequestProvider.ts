@@ -6,10 +6,11 @@ class FormatRequestProvider {
     const formattedGoal = {
       pedido: {
         cliente: {
-          nome: 'teste 11',
+          nome: 'teste 12',
           tipoPessoa: goal.assignee.type === 'company' ? 'J' : 'F',
-          endereco: 'Teste',
-          cpf_cnpj: '00000000000000',
+          endereco: 'Teste 4',
+          cpf_cnpj:
+            goal.assignee.type === 'company' ? '00000000000000' : '00000000000',
           ie_rg: '3067663000',
           numero: '392',
           fone: '5481153376',
