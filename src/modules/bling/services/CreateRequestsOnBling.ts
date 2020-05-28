@@ -25,7 +25,7 @@ class CreateRequestsOnBling {
         const formattedGoal = await formatRequestProvider.format(goal);
         const xml = await xml2jsProvider.generate(formattedGoal);
 
-        const response = await blingapi.post('pedido/json', {
+        const response = await blingapi.post('pedido/json', null, {
           params: {
             apikey:
               'f1e716360b3b8804c30463e3a006302adf28da982fc9d3c67d6bb5f46f72720ba74c676e',

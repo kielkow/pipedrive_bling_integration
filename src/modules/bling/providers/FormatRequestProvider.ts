@@ -17,10 +17,10 @@ class FormatRequestProvider {
         itens: {
           item: {
             codigo: '001',
-            descricao: 'Caneta 001',
+            descricao: 'item',
             un: 'Pç',
-            qtde: '10',
-            vlr_unit: '1.68',
+            qtde: '1',
+            vlr_unit: '1',
           },
         },
       },
