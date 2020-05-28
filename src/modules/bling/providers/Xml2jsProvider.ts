@@ -10,7 +10,7 @@ class Xml2jsProvider {
 
       if (!xml) {
         throw new AppError(
-          `Not possible to convert to XML goal ${formattedGoal.pedido.cliente.numero}`,
+          `Not possible to convert to XML goal ${formattedGoal.pedido.cliente.nome}`,
           500,
         );
       }
