@@ -11,10 +11,10 @@ class FormatRequestProvider {
         },
         itens: {
           item: {
-            codigo: '001',
-            descricao: 'item',
+            codigo: goal.id,
+            descricao: `item - ${goal.title}`,
             un: 'Pç',
-            qtde: '1',
+            qtde: goal.expected_outcome.target,
             vlr_unit: '1',
           },
         },
