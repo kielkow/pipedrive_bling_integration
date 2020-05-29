@@ -9,7 +9,7 @@ class Database {
 
   mongo(): void {
     this.mongoConnection = mongoose.connect(
-      'mongodb://localhost:27017/pipedriveBlingIntegration',
+      'mongodb+srv://pipedriveblingintegration:pipedriveblingintegration@pipedriveblingintegration-nd8ye.mongodb.net/database?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useFindAndModify: true,

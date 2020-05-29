@@ -11,8 +11,15 @@ import FormatRequestProvider from '../providers/FormatRequestProvider';
 
 import blingapi from '../api/blingapi';
 
+interface ResponseGoalsAlreadyRegistered {
+  status: number;
+  message: string;
+}
+
 class CreateRequestsOnBling {
-  public async execute(goals: GoalPipeDrive[]): Promise<RequestBling[]> {
+  public async execute(
+    goals: GoalPipeDrive[],
+  ): Promise<RequestBling[] | ResponseGoalsAlreadyRegistered> {
     const createGoalOnDatabase = new CreateGoalOnDatabase();
     const xml2jsProvider = new Xml2jsProvider();
     const formatRequestProvider = new FormatRequestProvider();
@@ -35,22 +42,31 @@ class CreateRequestsOnBling {
             },
           });
 
-          const request: RequestBling = {
-            numero: response.data.retorno.pedidos[0].pedido.numero,
-            idPedido: response.data.retorno.pedidos[0].pedido.idPedido,
-            codigos_rastreamento: {
-              codigo_rastreamento:
-                response.data.retorno.pedidos[0].pedido.codigos_rastreamento
-                  .codigos_rastreamento,
-            },
-            volumes: response.data.retorno.pedidos[0].pedido.volumes,
-          };
+          if (!response.data.retorno.erros[0].erro) {
+            const request: RequestBling = {
+              numero: response.data.retorno.pedidos[0].pedido.numero,
+              idPedido: response.data.retorno.pedidos[0].pedido.idPedido,
+              codigos_rastreamento: {
+                codigo_rastreamento:
+                  response.data.retorno.pedidos[0].pedido.codigos_rastreamento
+                    .codigos_rastreamento,
+              },
+              volumes: response.data.retorno.pedidos[0].pedido.volumes,
+            };
 
-          requests.push(request);
+            requests.push(request);
+          }
         } catch {
           throw new AppError('Error to create a request on Bling', 500);
         }
       }
+    }
+
+    if (requests.length === 0) {
+      return {
+        status: 200,
+        message: 'All goals have already been registered',
+      };
     }
 
     return requests;
