@@ -8,14 +8,11 @@ class Database {
   }
 
   mongo(): void {
-    this.mongoConnection = mongoose.connect(
-      'mongodb+srv://pipedriveblingintegration:pipedriveblingintegration@pipedriveblingintegration-nd8ye.mongodb.net/database?retryWrites=true&w=majority',
-      {
-        useNewUrlParser: true,
-        useFindAndModify: true,
-        useUnifiedTopology: true,
-      },
-    );
+    this.mongoConnection = mongoose.connect(`${process.env.MONGO_URL}`, {
+      useNewUrlParser: true,
+      useFindAndModify: true,
+      useUnifiedTopology: true,
+    });
   }
 }
 
