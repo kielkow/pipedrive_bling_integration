@@ -12,6 +12,10 @@ yarn
 npm install
 ```
 
+## Config Enviroment Variables
+
+Create an .env file and set your tokens and data base credentials.
+
 ## End points
 
 Get all goals registered on data base:
