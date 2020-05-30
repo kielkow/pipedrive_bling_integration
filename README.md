@@ -15,6 +15,7 @@ npm install
 ## Config Enviroment Variables
 
 Create an .env file and set your tokens and data base credentials.
+Use <strong>.env.example</strong>.
 
 ## End points
 
