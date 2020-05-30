@@ -24,6 +24,12 @@ Get all goals registered on data base:
 ```bash
 Method: GET
 http://localhost:3333/requests
+
+available query params to filter on database:
+ - title
+ - target
+ - date_start
+ - date_end
 ```
 
 Register goals from Pipedrive on Bling:
