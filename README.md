@@ -27,9 +27,16 @@ http://localhost:3333/requests
 
 available query params to filter on database:
  - title
+   Example: http://localhost:3333/requests?title=test
+   
  - target
+   Example: http://localhost:3333/requests?target=74.0866274637918
+   
  - date_start
+   Example: http://localhost:3333/requests?date_start=2020-05-26
+   
  - date_end
+   Example: http://localhost:3333/requests?date_end=2022-12-31
 ```
 
 Register goals from Pipedrive on Bling:
