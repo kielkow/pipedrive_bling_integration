@@ -14,8 +14,12 @@ npm install
 
 ## Run project
 
+Use the package manager [yarn](https://yarnpkg.com/) or
+[npm](https://www.npmjs.com/) to run the project.
+
 ```bash
 yarn dev:server
+npm run dev:server
 ```
 
 ## Config Enviroment Variables
