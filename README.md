@@ -12,6 +12,12 @@ yarn
 npm install
 ```
 
+## Run project
+
+```bash
+yarn dev:server
+```
+
 ## Config Enviroment Variables
 
 Create an .env file and set your tokens and data base credentials.
