@@ -9,7 +9,7 @@ describe('SearchGoalsOnPipeDrive', () => {
         type: {
           name: 'deals_won',
         },
-        api_token: '315af955d0e215af97ca19d987e95a41e9c61d81',
+        api_token: process.env.API_TOKEN_PIPEDRIVE,
       },
     });
 
